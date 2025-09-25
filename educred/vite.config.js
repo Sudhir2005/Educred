@@ -1,14 +1,14 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+// frontend/vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   css: {
-    postcss: "./postcss.config.js", // ✅ ensures Tailwind + PostCSS runs
+    postcss: {
+      plugins: [tailwindcss(), autoprefixer()],
+    },
   },
-  server: {
-    port: 5173, // ✅ default Vite port (change if needed)
-    open: true, // ✅ auto-open browser when running dev
-  },
-});
+})

@@ -20,19 +20,37 @@ export default function Sidebar({ role }) {
   const links = role === "student" ? studentLinks : teacherLinks;
 
   return (
-    <aside className="flex-col hidden w-64 p-6 bg-white shadow-lg md:flex">
-      <h2 className="mb-6 text-xl font-bold text-primary">EduCred</h2>
-      {links.map((link) => (
-        <Link
-          key={link.path}
-          to={link.path}
-          className={`mb-3 px-3 py-2 rounded hover:bg-primary hover:text-white transition-colors ${
-            location.pathname === link.path ? "bg-primary text-white" : "text-softgray"
-          }`}
-        >
-          {link.name}
-        </Link>
-      ))}
+    <aside
+      className="flex-col hidden w-64 min-h-screen p-6 shadow-md md:flex"
+      style={{ backgroundColor: "#FFFFFF" }}
+    >
+      {/* Brand */}
+      <h2
+        className="mb-8 text-2xl font-bold tracking-wide"
+        style={{ color: "#2B3A67" }}
+      >
+        EduCred
+      </h2>
+
+      {/* Nav Links */}
+      <nav className="flex flex-col space-y-2">
+        {links.map((link) => {
+          const isActive = location.pathname === link.path;
+          return (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`px-4 py-2 rounded-md font-medium transition-colors`}
+              style={{
+                backgroundColor: isActive ? "#2B3A67" : "transparent",
+                color: isActive ? "#FFFFFF" : "#2B3A67",
+              }}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
+      </nav>
     </aside>
   );
 }
