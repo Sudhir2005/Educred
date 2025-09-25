@@ -1,7 +1,17 @@
-// src/pages/UploadDocuments.jsx
 import React from "react";
 import Layout from "../layouts/Layout";
 import FileUpload from "../components/FileUpload";
+
+function DocumentCard({ title, onUpload }) {
+  return (
+    <div className="p-5 sm:p-6 bg-white rounded-2xl shadow hover:shadow-lg w-full">
+      <h2 className="mb-4 text-base sm:text-lg font-semibold text-gray-700 truncate">
+        {title}
+      </h2>
+      <FileUpload label="Select File" onUpload={onUpload} />
+    </div>
+  );
+}
 
 export default function UploadDocuments() {
   const handleUpload = (file) => {
@@ -10,33 +20,15 @@ export default function UploadDocuments() {
 
   return (
     <Layout role="student">
-      {/* Centered container with max width */}
-      <div className="flex justify-center w-full">
-        <main className="grid w-full max-w-4xl gap-6 p-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {/* Academic Certificates */}
-          <div className="p-6 transition-shadow bg-white shadow-md rounded-xl hover:shadow-lg">
-            <h2 className="mb-4 text-lg font-semibold text-gray-700">
-              Academic Certificates
-            </h2>
-            <FileUpload label="Select File" onUpload={handleUpload} />
-          </div>
+      {/* Only page-specific title, no EduCred logo */}
+      <h1 className="mb-6 text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
+        📁 Upload Your Documents
+      </h1>
 
-          {/* Non-Academic Certificates */}
-          <div className="p-6 transition-shadow bg-white shadow-md rounded-xl hover:shadow-lg">
-            <h2 className="mb-4 text-lg font-semibold text-gray-700">
-              Non-Academic Certificates
-            </h2>
-            <FileUpload label="Select File" onUpload={handleUpload} />
-          </div>
-
-          {/* Other Documents */}
-          <div className="p-6 transition-shadow bg-white shadow-md rounded-xl hover:shadow-lg">
-            <h2 className="mb-4 text-lg font-semibold text-gray-700">
-              Other Documents
-            </h2>
-            <FileUpload label="Select File" onUpload={handleUpload} />
-          </div>
-        </main>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <DocumentCard title="Academic Certificates" onUpload={handleUpload} />
+        <DocumentCard title="Non-Academic Certificates" onUpload={handleUpload} />
+        <DocumentCard title="Other Documents" onUpload={handleUpload} />
       </div>
     </Layout>
   );
