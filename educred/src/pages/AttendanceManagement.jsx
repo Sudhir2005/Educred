@@ -14,7 +14,7 @@ export default function AttendanceManagement() {
     <div className="flex min-h-screen bg-offwhite">
       <Sidebar role="teacher" />
       <div className="flex flex-col flex-1">
-        <Navbar role="teacher" />
+        {/* <Navbar role="teacher" /> */}
         <main className="p-6">
           <h2 className="mb-4 text-xl font-bold text-primary">Attendance Management</h2>
           <AttendanceTable records={records} />

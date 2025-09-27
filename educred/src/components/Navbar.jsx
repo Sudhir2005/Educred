@@ -7,13 +7,11 @@ export default function Navbar({ role }) {
 
   return (
     <nav
-      className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 shadow-md"
+      className="flex items-center justify-between px-4 py-4 shadow-md sm:px-6 lg:px-8"
       style={{ backgroundColor: "#2B3A67" }}
     >
       {/* Logo / Brand */}
-      <div className="text-xl font-bold tracking-wide text-white">
-        EduCred
-      </div>
+      <div className="text-xl font-bold tracking-wide text-white">EduCred</div>
 
       {/* Right Section */}
       <div className="flex items-center space-x-4 sm:space-x-6">
@@ -44,7 +42,7 @@ export default function Navbar({ role }) {
 
           {/* Dropdown Menu */}
           {openDropdown && (
-            <div className="absolute right-0 w-40 mt-2 bg-white border rounded-lg shadow-lg z-10">
+            <div className="absolute right-0 z-10 w-40 mt-2 bg-white border rounded-lg shadow-lg">
               <button className="flex items-center w-full px-4 py-2 text-sm text-[#2B3A67] hover:bg-[#F7F9FC]">
                 <User size={16} className="mr-2" /> Profile
               </button>

@@ -13,12 +13,12 @@ export default function StudentLayout() {
       </div>
 
       {/* Main Section */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex flex-col flex-1">
         {/* Top Navbar */}
         <Navbar role="student" />
 
         {/* Main Content */}
-        <main className="flex-1 w-full p-4 sm:p-6 overflow-y-auto pb-20 md:pb-6">
+        <main className="flex-1 w-full p-4 pb-20 overflow-y-auto sm:p-6 md:pb-6">
           {/* ✅ pb-20 prevents content from being hidden behind FooterNavbar on mobile */}
           <Outlet />
         </main>
