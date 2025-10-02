@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
 import Login from "./pages/Login";
@@ -9,6 +9,12 @@ import UploadDocuments from "./pages/UploadDocuments";
 import AttendanceManagement from "./pages/AttendanceManagement";
 import Portfolio from "./pages/Portfolio";
 import Reports from "./pages/Reports";
+import TeacherSignUp from "./pages/TeacherSignUp";
+import CertificatePage from "./pages/CertificatePage";
+import Academic from "./pages/Academic";
+import AcademicCertificates from "./pages/AcademicCertificates";
+import NonAcademicCertificates from "./pages/NonAcademicCertificates";
+import DisplayCertificate from "./pages/DisplayCertificate";
 
 // Layout
 import Layout from "./layouts/Layout";
@@ -27,7 +33,6 @@ const NotFound = () => (
   </div>
 );
 
-// Login Wrapper
 const LoginWrapper = () => (
   <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 bg-offwhite">
     <Login />
@@ -42,16 +47,67 @@ export default function App() {
         <Route path="/" element={<LoginWrapper />} />
 
         {/* Student Routes */}
-        <Route path="/student/dashboard" element={<Layout role="student"><StudentDashboard /></Layout>} />
-        <Route path="/student/upload" element={<Layout role="student"><UploadDocuments /></Layout>} />
-        <Route path="/student/portfolio" element={<Layout role="student"><Portfolio /></Layout>} />
+        <Route
+          path="/student/dashboard"
+          element={<Layout role="student"><StudentDashboard /></Layout>}
+        />
+        <Route
+          path="/student/upload"
+          element={<Layout role="student"><UploadDocuments /></Layout>}
+        />
+        <Route
+          path="/student/portfolio"
+          element={<Layout role="student"><Portfolio /></Layout>}
+        />
 
         {/* Teacher Routes */}
-        <Route path="/teacher/dashboard" element={<Layout role="teacher"><TeacherDashboard /></Layout>} />
-        <Route path="/teacher/attendance" element={<Layout role="teacher"><AttendanceManagement /></Layout>} />
-        <Route path="/teacher/reports" element={<Layout role="teacher"><Reports /></Layout>} />
+        <Route
+          path="/teacher/dashboard"
+          element={<Layout role="teacher"><TeacherDashboard /></Layout>}
+        />
+        <Route
+          path="/teacher/attendance"
+          element={<Layout role="teacher"><AttendanceManagement /></Layout>}
+        />
+        <Route
+          path="/teacher/reports"
+          element={<Layout role="teacher"><Reports /></Layout>}
+        />
 
-        {/* Global Catch-all */}
+        {/* Certificate Pages */}
+        <Route
+          path="/teacher/certificates"
+          element={<Layout role="teacher"><CertificatePage /></Layout>}
+        />
+
+        {/* Academic Certificates */}
+        <Route
+          path="/teacher/certificates/academic"
+          element={<Layout role="teacher"><Academic /></Layout>}
+        />
+        <Route
+          path="/teacher/certificates/academic/:id"
+          element={<Layout role="teacher"><AcademicCertificates /></Layout>}
+        />
+        <Route
+          path="/teacher/certificates/academic/:id/certificate/:certId"
+          element={<Layout role="teacher"><DisplayCertificate /></Layout>}
+        />
+
+        {/* Non-Academic Certificates */}
+        <Route
+          path="/teacher/certificates/non-academic"
+          element={<Layout role="teacher"><NonAcademicCertificates /></Layout>}
+        />
+        <Route
+          path="/teacher/certificates/non-academic/:id"
+          element={<Layout role="teacher"><DisplayCertificate /></Layout>}
+        />
+
+        {/* Teacher Sign Up */}
+        <Route path="/teacher/signup" element={<TeacherSignUp />} />
+
+        {/* Catch-all */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

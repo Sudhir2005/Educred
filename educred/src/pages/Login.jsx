@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 
@@ -8,7 +8,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (role === "student") {
       navigate("/student/dashboard");
     } else {
@@ -18,14 +18,14 @@ export default function Login() {
 
   return (
     <div className="relative flex items-center justify-center w-screen h-screen overflow-hidden">
-      {/* Full Background Gradient */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-offwhite via-gray-100 to-offwhite"></div>
 
       {/* Decorative Circles */}
       <div className="absolute w-[50vw] h-[50vw] max-w-96 max-h-96 rounded-full -top-24 -left-24 bg-primary opacity-20 animate-pulse"></div>
       <div className="absolute w-[55vw] h-[55vw] max-w-[28rem] max-h-[28rem] rounded-full -bottom-24 -right-24 bg-secondary opacity-20 animate-pulse"></div>
 
-      {/* Login Card */}
+      {/* Card */}
       <div className="relative z-10 w-full max-w-sm p-6 bg-white shadow-2xl rounded-3xl sm:max-w-md md:max-w-lg lg:max-w-xl sm:p-8 lg:p-10">
         <h1 className="mb-6 text-2xl font-extrabold text-center text-primary sm:text-3xl md:text-4xl sm:mb-8">
           EduCred
@@ -49,7 +49,7 @@ export default function Login() {
           </Button>
         </div>
 
-        {/* Form */}
+        {/* Login Form */}
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <InputField label="Email / Team ID" placeholder="Enter your ID" />
           <InputField label="Password" type="password" placeholder="••••••" />
@@ -62,11 +62,25 @@ export default function Login() {
           </Button>
         </form>
 
+        {/* Role message */}
         <p className="mt-4 text-xs text-center text-softgray sm:mt-6 sm:text-sm md:text-base">
           {role === "student"
             ? "Login with your Student ID / Email"
             : "Login with Teacher credentials"}
         </p>
+
+        {/* Sign Up link only for teachers */}
+        {role === "teacher" && (
+          <p className="mt-3 text-sm text-center">
+            Don’t you have an account?{" "}
+            <Link
+              to="/teacher/signup"
+              className="font-semibold text-blue-600 hover:underline"
+            >
+              Sign Up
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );
