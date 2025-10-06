@@ -18,12 +18,11 @@ import DisplayCertificate from "./pages/DisplayCertificate";
 import StuAchievement from "./pages/StuAchievement";
 import StuCertificate from "./pages/StuCertificate";
 import UploadAndView from "./pages/UploadAndView";
-import UploadFile from "./pages/UploadFile"; // ✅ NEW PAGE
+import UploadFile from "./pages/UploadFile";
 
 // Layout
 import Layout from "./layouts/Layout";
 
-// 404 Page
 const NotFound = () => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-offwhite px-4">
     <h1 className="mb-4 text-5xl font-extrabold text-primary">404</h1>
@@ -79,8 +78,6 @@ export default function App() {
           path="/student/achievements/certificates/manage/upload"
           element={<Layout role="student"><UploadFile /></Layout>}
         />
-
-        {/* ✅ New Additional Documents Route */}
         <Route
           path="/student/achievements/additional-documents"
           element={<Layout role="student"><UploadAndView /></Layout>}
@@ -99,14 +96,10 @@ export default function App() {
           path="/teacher/reports"
           element={<Layout role="teacher"><Reports /></Layout>}
         />
-
-        {/* Certificate Pages */}
         <Route
           path="/teacher/certificates"
           element={<Layout role="teacher"><CertificatePage /></Layout>}
         />
-
-        {/* Academic Certificates */}
         <Route
           path="/teacher/certificates/academic"
           element={<Layout role="teacher"><Academic /></Layout>}
@@ -119,8 +112,6 @@ export default function App() {
           path="/teacher/certificates/academic/:id/certificate/:certId"
           element={<Layout role="teacher"><DisplayCertificate /></Layout>}
         />
-
-        {/* Non-Academic Certificates */}
         <Route
           path="/teacher/certificates/non-academic"
           element={<Layout role="teacher"><NonAcademicCertificates /></Layout>}
@@ -129,8 +120,6 @@ export default function App() {
           path="/teacher/certificates/non-academic/:id"
           element={<Layout role="teacher"><DisplayCertificate /></Layout>}
         />
-
-        {/* Teacher Sign Up */}
         <Route path="/teacher/signup" element={<TeacherSignUp />} />
 
         {/* Catch-all */}
