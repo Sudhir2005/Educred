@@ -15,6 +15,10 @@ import Academic from "./pages/Academic";
 import AcademicCertificates from "./pages/AcademicCertificates";
 import NonAcademicCertificates from "./pages/NonAcademicCertificates";
 import DisplayCertificate from "./pages/DisplayCertificate";
+import StuAchievement from "./pages/StuAchievement";
+import StuCertificate from "./pages/StuCertificate";
+import UploadAndView from "./pages/UploadAndView";
+import UploadFile from "./pages/UploadFile"; // ✅ NEW PAGE
 
 // Layout
 import Layout from "./layouts/Layout";
@@ -58,6 +62,28 @@ export default function App() {
         <Route
           path="/student/portfolio"
           element={<Layout role="student"><Portfolio /></Layout>}
+        />
+        <Route
+          path="/student/achievements"
+          element={<Layout role="student"><StuAchievement /></Layout>}
+        />
+        <Route
+          path="/student/achievements/certificates"
+          element={<Layout role="student"><StuCertificate /></Layout>}
+        />
+        <Route
+          path="/student/achievements/certificates/manage"
+          element={<Layout role="student"><UploadAndView /></Layout>}
+        />
+        <Route
+          path="/student/achievements/certificates/manage/upload"
+          element={<Layout role="student"><UploadFile /></Layout>}
+        />
+
+        {/* ✅ New Additional Documents Route */}
+        <Route
+          path="/student/achievements/additional-documents"
+          element={<Layout role="student"><UploadAndView /></Layout>}
         />
 
         {/* Teacher Routes */}

@@ -1,10 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { BookOpen, Award, CalendarCheck } from "lucide-react";
 import Progress from "../components/ui/Progress";
 
-function StatCard({ icon: Icon, iconColor, title, value, progress }) {
+function StatCard({ icon: Icon, iconColor, title, value, progress, onClick }) {
   return (
-    <div className="p-5 sm:p-6 bg-white rounded-2xl shadow hover:shadow-md transition w-full">
+    <div
+      className="p-5 sm:p-6 bg-white rounded-2xl shadow hover:shadow-md transition w-full cursor-pointer"
+      onClick={onClick}
+    >
       <div className="flex items-center gap-3 mb-3">
         <Icon className={`w-6 h-6 ${iconColor}`} />
         <h3 className="font-semibold text-gray-700 text-sm sm:text-base">
@@ -18,6 +22,8 @@ function StatCard({ icon: Icon, iconColor, title, value, progress }) {
 }
 
 export default function StudentDashboard() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       {/* Page Title */}
@@ -39,6 +45,7 @@ export default function StudentDashboard() {
           iconColor="text-green-600"
           title="Achievements"
           value="5 Certificates Verified"
+          onClick={() => navigate("/student/achievements")}
         />
         <StatCard
           icon={CalendarCheck}
