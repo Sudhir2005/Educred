@@ -1,3 +1,4 @@
+// src/pages/StudentDashboard.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Award, CalendarCheck } from "lucide-react";
@@ -26,7 +27,6 @@ export default function StudentDashboard() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-      {/* Page Title */}
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 truncate">
         📊 Student Dashboard
       </h2>
